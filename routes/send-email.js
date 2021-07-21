@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
+//var smtpTransport = require('nodemailer-smtp-transport');
 const File = require('../models/file');
 
 
@@ -14,22 +14,24 @@ router.post('/', async (req, res) => {
 		console.log(process.env.SMTP_EMAIL);
 		console.log(process.env.SMTP_PASSWORD);
 
-		// create reusable transporter object using the default SMTP transport
-		// let transporter = nodemailer.createTransport({
-		// 	service: 'gmail',
-		// 	auth: {
-		// 		user: process.env.SMTP_EMAIL, // generated ethereal user
-		// 		pass: process.env.SMTP_PASSWORD, // generated ethereal password
-		// 	},
-		// });
-
-		var transporter = nodemailer.createTransport(smtpTransport({
+		create reusable transporter object using the default SMTP transport
+		let transporter = nodemailer.createTransport({
 			service: 'gmail',
+			host: "smtp-relay.sendinblue.com",
+			port: 587,
 			auth: {
 				user: process.env.SMTP_EMAIL, // generated ethereal user
 				pass: process.env.SMTP_PASSWORD, // generated ethereal password
-			}
-		}));
+			},
+		});
+
+// 		var transporter = nodemailer.createTransport(smtpTransport({
+// 			service: 'gmail',
+// 			auth: {
+// 				user: process.env.SMTP_EMAIL, // generated ethereal user
+// 				pass: process.env.SMTP_PASSWORD, // generated ethereal password
+// 			}
+// 		}));
 		// send mail with defined transport object
 		let info = await transporter.sendMail({
 			from: from_address, // sender address
