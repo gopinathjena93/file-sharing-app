@@ -15,8 +15,7 @@ router.post('/', async (req, res) => {
 		console.log(process.env.SMTP_PASSWORD);
 
 		create reusable transporter object using the default SMTP transport
-		let transporter = nodemailer.createTransport({
-			service: 'gmail',
+		let transporter = nodemailer.createTransport({			
 			host: "smtp-relay.sendinblue.com",
 			port: 587,
 			auth: {
