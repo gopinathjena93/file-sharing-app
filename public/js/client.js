@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:3000/";
+//const baseUrl = "http://localhost:3000/";
+const baseUrl = "https://gopi-file-sharing-app.herokuapp.com/";
 const maxAllowedSize = 100 * 1024 * 1024;
 
 const dropZone = document.querySelector(".drop-zone");
